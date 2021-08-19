@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <style>
+        :root {
+            --main-color: red;
+        }
+
+        /*****************************************************************/
+        body {
+            margin: 0;
+            padding: 0;
+            /*background-image: linear-gradient(125deg, #e0eafc, #b6fbff, #c9ffbf, #cfdef3);*/
+            background-color: yellow;
+            background-size: 200%;
+            animation: bganimation 15s infinite;
+        }
+
+        @keyframes bganimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .cat-title {
+            margin-left: 40%;
+            top: 10%;
+            color: #323232;
+            font-size: 350%;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 40px;
+            padding-bottom: 5%;
+            padding-top: 3%;
+        }
+
+
+        hr {
+            border: 1px solid black;
+        }
+
+
+
+
+        .footr {
+            border: 2px solid #323232;
+            background-color: #323232;
+            width: 99.7%;
+            margin-top: 10%px;
+            padding-top: 1.5%;
+            padding-bottom: 2%;
+            overflow: auto;
+        }
+
+        .footer-bottom {
+            background: #323232;
+            color: #686868;
+            height: 40px;
+            width: 100%;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .footr-two-col {
+            width: 33%;
+            float: left;
+        }
+
+        .footr-link a:link {
+            font-size: 120%;
+            color: white;
+        }
+
+        .footr-link a:visited {
+            color: white;
+        }
+
+        .footr-link a:hover {
+            color: #686868;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #344700;
+            position: fixed;
+            width: 100%;
+            padding: 4px 16px;
+            z-index: 5;
+        }
+
+        .navimg {
+            float: right;
+            padding-right: 10px;
+            font-size: 100%;
+        }
+
+        .tab a {
+            float: left;
+            display: block;
+            color: #cccfd1;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 100%;
+            font-family: "georgia";
+            padding-left: 20px;
+        }
+
+        .tab a:hover {
+            color: #d1d1d1;
+            background-color: #565759;
+            border-radius: 4px;
+        }
+
+        .navimg a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-family: "georgia";
+            padding-left: 20px;
+        }
+
+        .navimg a:hover {
+            color: #133246;
+            border-radius: 4px;
+        }
+
+        /************************************************************/
+        .product-grid {
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            border: 2px solid #323232;
+            height: 350px;
+            width: 275px;
+        }
+
+        .product-grid .product-image {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-grid .product-image:before {
+            content: "";
+            background: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: all 0.4s ease-out 0s;
+        }
+
+        .product-grid:hover .product-image:before {
+            opacity: 1;
+        }
+
+        .product-grid .product-image a {
+            display: block;
+        }
+
+        .product-grid .product-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-image .pic-1 {
+            opacity: 1;
+            backface-visibility: hidden;
+            transition: all 0.4s ease-out 0s;
+        }
+
+        .product-grid:hover .product-image .pic-1 {
+            opacity: 0;
+        }
+
+        .product-image .pic-2 {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            backface-visibility: hidden;
+            transform: scale(3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.4s ease-out 0s;
+        }
+
+        .product-grid:hover .product-image .pic-2 {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .product-image .product-trend-label,
+        .product-image .product-discount-label {
+            content: "";
+            color: #fff;
+            background-color: #2ecc71;
+            font-size: 12px;
+            line-height: 28px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0 7px;
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 3;
+        }
+
+        .product-image .product-discount-label {
+            background-color: var(--main-color);
+            left: auto;
+            right: 12px;
+        }
+
+
+        .product-grid .product-content {
+            padding: 12px 0;
+        }
+
+        .product-grid .title {
+            font-size: 15px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: black;
+            margin: 0 0 5px;
+        }
+
+        .product-grid .title a {
+            color: black;
+        }
+
+        .product-grid .title a:hover {
+            color: var(--main-color);
+        }
+
+        .product-grid .price {
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .product-grid .price span {
+            color: #333;
+            text-decoration: line-through;
+            margin-right: 3px;
+        }
+
+        .product-grid .price.discount {
+            color: var(--main-color);
+        }
+
+        .product-grid {
+            margin-bottom: 30px;
+        }
+
+        @media (max-width:768px) {
+
+            body,
+            html {
+                height: 100%;
+                margin: 0;
+                line-height: 180%;
+                color: #666;
+                text-align: center;
+            }
+
+            .navbar {
+                width: 100%;
+            }
+
+            .tab a {
+                padding-left: 5px;
+                font-size: 80%;
+            }
+
+
+            .footr-two-col {
+                width: 90%;
+                padding-bottom: 2%;
+                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .footr {
+                width: 98.9%;
+                margin-top: 10%px;
+                padding-top: 1.5%;
+                padding-bottom: 2%;
+                overflow: hidden;
+            }
+
+
+            .navimg {
+                float: left;
+            }
+
+            .tab a {
+                float: left;
+            }
+
+            .cat-title {
+                margin-top: 10%;
+                font-size: 150%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .product-grid {
+                border: 2px solid #323232;
+                height: auto;
+                width: 60%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="tab">
+            <a class="active" href="../index.html">HOME</a>
+            <a href="../css/login.html">LOGIN</a>
+            <a href="../css/category.html">PRODUCTS</a>
+            <a href="../css/about_2.html">ABOUT US</a>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="cat-title">LAPTOP</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/300.jpg">
+                            <img class="pic-2" src="../img/300-2.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">38%</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2Fs8agj">Acer Predator Helios 300 Core i5 8th Gen</a>
+                        </h3>
+                        <div class="price discount"><span>Rs.1,04,999</span>Rs.64,990</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/msi.jpg">
+                            <img class="pic-2" src="../img/msi-2.jpg">
+                        </a>
+                        <span class="product-trend-label">ON SALE</span>
+                        <span class="product-discount-label">11%</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2XrkrM5">MSI GS Core i7 8th Gen</a></h3>
+                        <div class="price discount"><span>Rs. 1,69,990</span> Rs.1,49,990</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/rog.jpg">
+                            <img class="pic-2" src="../img/rog-2.jpg">
+                        </a>
+
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2x7bPeM">Asus ROG Strix Edition Core i7 7th Gen</a>
+                        </h3>
+                        <div class="price discount"> Rs.1,39,990</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/om.jpg">
+                            <img class="pic-2" src="../img/om-2.jpg">
+                        </a>
+
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2LcHuDF">HP Omen Core i5 7th Gen</a></h3>
+                        <div class="price discount"> Rs.1,02,551</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cat-title">DESKTOP</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/z.jpg">
+                            <img class="pic-2" src="../img/AA.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">1%</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2LceFaw">Apple - (Core i5/8 GB DDR3/1 TB/Mac OS X
+                                Mavericks/512 MB)</a></h3>
+                        <div class="price discount"><span>Rs.1,15,000</span>Rs.1,14,990</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/d4.jpg">
+                            <img class="pic-2" src="../img/d3.jpg">
+                        </a>
+
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/31KAGmR">Dell - (Ryzen 7/16 GB DDR4/1 TB/Windows 10
+                                Home/8 GB GDDR5)</a></h3>
+                        <div class="price discount"> Rs1,49,990</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/l.jpg">
+                            <img class="pic-2" src="../img/ll.jpg">
+                        </a>
+
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2IZysHA">Lenovo - (Core i3 (6th Gen)</a></h3>
+                        <div class="price discount"> Rs.33,270</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/q.jpg">
+                            <img class="pic-2" src="../img/qq.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">10%</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2XxvUcZ" </A>Apple - (Core i5 (7th Gen)</a></h3>
+                        <div class="price discount"><SPAN>rS.1,90,400</SPAN> Rs1,89,990</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cat-title">ACCESSORIES</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/hy.jpg">
+                            <img class="pic-2" src="../img/hy2.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">10% OFF</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2ZMC2eZ">HyperX Wired Optical Gaming Mouse</a></h3>
+                        <div class="price discount"><span>Rs5,999</span>Rs.5,349</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/hyk2.jpg">
+                            <img class="pic-2" src="../img/hyk.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">23% OFF</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2Nb60Yz">HyperX Alloy Core RGB Wired USB Gaming
+                                Keyboard</a></h3>
+                        <div class="price discount"> <span>6,290</span>Rs4,789</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/lg.jpg">
+                            <img class="pic-2" src="../img/lg2.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">9% OFF</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2X3yQOZ">LG 27 inch 4K Ultra HD LED Backlit IPS Panel
+                                Monitor</a></h3>
+                        <div class="price discount"> <span>Rs.44,000</span>Rs.39,689</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="../img/cp.jpg">
+                            <img class="pic-2" src="../img/cp2.jpg">
+                        </a>
+                        <span class="product-trend-label">ON OFFER</span>
+                        <span class="product-discount-label">16%</span>
+
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="https://bit.ly/2J9ErKa">Canon E560 Multi-function Wireless Printer
+                            </a></h3>
+                        <div class="price discount"><SPAN>rS.6,445</SPAN> Rs5,399</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        &copy; 2021-2021 infotech.in, Inc.
+    </div>
